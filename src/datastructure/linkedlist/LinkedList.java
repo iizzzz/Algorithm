@@ -93,4 +93,112 @@ public class LinkedList<E> {
         currentSize++;
         return;
     }
+    /* ----------------- Remove First ----------------- */
+    public E removeFirst() {
+
+        if (head == null) {
+            return null;
+        }
+
+        // 삭제할 첫번째 요소의 데이터
+        E tmp = head.data;
+
+        // head와 tail이 같을때 (요소가 1개일때) head 와 tail을 둘 다 바꿔줌
+        if (head == tail) {
+            head = tail = null;
+        } else {
+            head = head.next; // head가 2번쨰 노드를 가리키게 함
+        }
+        currentSize--;
+
+        return tmp;
+    }
+    /* ----------------- Remove Last ----------------- */
+    public E removeLast() {
+        // 비어있을때
+        if (head == null) {
+            return null;
+        }
+
+        // 하나의 요소만 있을때
+        if (head == tail) {
+            return removeFirst();
+        }
+
+        // 그 외, 임시포인터 current, privious를 활용하여 마지막 노드 제거
+        Node<E> current = head;
+        Node<E> previous = null;
+
+        // 리스트의 끝에 도착 할때까지 요소들을 하나씩 살펴보기
+        while (current != tail) {
+            previous = current; // 순서 중요 previous가 먼저 head를 가리켜야함
+            current = current.next;
+        }
+
+        // 리스트의 끝에 도달 했을 시
+        previous.next = null;
+        tail = previous;
+        currentSize--;
+        return current.data;
+    }
+    /* ----------------- Remove ----------------- */
+    public E remove(E obj) {
+
+        Node<E> current = head, previous = null;
+
+        // current가 마지막 요소 까지 갈동안 필터링
+        // current가 아닌 current.next를 while 조건 안에 두면 마지막 요소는 확인을 못한다
+        while (current != null) {
+
+            // current.data가 지우고자 하는 데이터와 같으면 (compareTo == 0)
+            if (((Comparable<E>) obj).compareTo(current.data) == 0) {
+
+                // 첫 요소 & 마지막 요소인지 필터링
+                if (current == head) {
+                    return removeFirst();
+                }
+                if (current == tail) {
+                    return removeLast();
+                }
+
+                // 지우고자 하는 요소를 찾았을때 지울 노드의 data 리턴
+                // previous에서 current를 가리키던 포인트를 삭제 해야 하므로 그 다음으로 건너뛰어서 가리킴
+                currentSize--;
+                previous.next = current.next;
+                return current.data;
+            }
+            // 찾고자 하는 요소가 아닐 때 current가 끝까지 도달할때 까지 다시 이동
+            previous = current;
+            current = current.next;
+        }
+
+        return null;
+    }
+
+    /* ----------------- Find ----------------- */
+    public boolean contains(E obj) {
+        Node<E> current = null;
+
+        while (current != null) {
+            if (((Comparable<E>) obj).compareTo(current.data) == 0) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+    /* ----------------- Peek ----------------- */
+    public E peekFirst() {
+        if (head == null) {
+            return null;
+        }
+        return head.data;
+    }
+
+    public E peekLastt() {
+        if (tail == null) {
+            return null;
+        }
+        return tail.data;
+    }
 }
