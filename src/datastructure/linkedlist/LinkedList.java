@@ -1,5 +1,8 @@
 package src.datastructure.linkedlist;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class LinkedList<E> {
 
     private Node<E> head;
@@ -200,5 +203,37 @@ public class LinkedList<E> {
             return null;
         }
         return tail.data;
+    }
+
+    /* ----------------- Iterator ----------------- */
+    class IteratorHelper implements Iterator {
+
+        Node<E> index;
+
+        public IteratorHelper() {
+            index = head;
+        }
+
+        // index가 null 이면 반환할게 없다 (비어있거나, 요소의 끝에 왔을때)
+        @Override
+        public boolean hasNext() {
+            return (index != null);
+        }
+
+        /**
+         * hasNext가 false면 Exception을 던지고
+         * 요소가 있으면 임의의 변수인 val에 현재 포인터가 가리키는 데이터를 반환하고
+         * 포인터를 다음 요소로 옮긴다
+         */
+        @Override
+        public Object next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+
+            E val = index.data;
+            index = index.next;
+            return val;
+        }
     }
 }
