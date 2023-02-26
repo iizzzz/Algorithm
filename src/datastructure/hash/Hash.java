@@ -1,6 +1,6 @@
 package src.datastructure.hash;
 
-public class HashChaining {
+public class Hash {
 
     // ----- 문자열을 기반으로 정수를 계산해주는 hashCode, 충돌 문제 해결-----
     static int hashCode(String s) { // this 가 입력으로 들어온다고 가정
@@ -24,10 +24,5 @@ public class HashChaining {
 
 
     // ----- 해시 크기 최적화 -----
-
     // 반환된 정수를 배열의 인덱스로 사용할수 있게 최적화
-    static int hashCode2(String s) {
-
-    }
-
 }
