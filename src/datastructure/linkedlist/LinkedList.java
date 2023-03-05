@@ -10,7 +10,7 @@ public class LinkedList<E> {
     private int currentSize;
 
     /** currentSize 변수 설명
-     * 시간복잡도 효율을 높이기 위한 포인터 변수, 리스트에 요소 추가시 + 1
+     * 시간복잡도 효율을 높이기 위한 포인터 변수, 리스트에 요소 추가시 + 1 +d
      * O(n) -> O(1)로 효율성 증대
      */
     public LinkedList() {
