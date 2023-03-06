@@ -30,7 +30,7 @@ public class 기능개발 {
                 System.out.println("j = " + j);
                 count++;
                 // progresses + speed를 더한 값이 100이 될떄까지 돌면서
-                // 개발에 걸리는 일수(count)를 ++하면서 그 값을 queue에 넣는다
+                // 개발에 걸리는 일수(count)를 ++하면서 그 값을 queue에 넣는다.
                 if (j >= 100) {
                     queue.offer(count);
                     break;
