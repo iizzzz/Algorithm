@@ -27,7 +27,7 @@ class Graph {
         // 간단현 구현을 위해 그래프의 노드 개수를 고정
         nodes = new Node[size];
         for (int i=0; i<size; i++) {
-            nodes[i] = new Node(i);
+//            nodes[i] = new Node(i);
         }
     }
 
@@ -72,13 +72,13 @@ class Graph {
     }
 
     // 노드 출력 함수
-    void bfs() { bfs(0);}
-    void bfs(int index) {
-        Node root = nodes[index];
-        Queue<Node> queue = new Queue<Node>() {
-
-        }
-    }
+//    void bfs() { bfs(0);}
+//    void bfs(int index) {
+//        Node root = nodes[index];
+//        Queue<Node> queue = new Queue<Node>() {
+//
+//        }
+//    }
     void visit(Node n) {
         System.out.println(n.data + " ");
     }
