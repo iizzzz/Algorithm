@@ -22,12 +22,12 @@ public class Baek_1157 {
 
 
         for (int i=0; i<a.length(); i++) {
-            char c = a.charAt(i);
-            // 맵에 이미 c가 있으면 있으면 그 값+1, 없으면 1을 맵에 저장
             // c = a의 i번쨰 요소인 알파벳
+            char c = a.charAt(i);
+            // 맵에 이미 c가 있으면 있으면 그 값+1, 없으면 0을 맵에 저장
             // 즉 동일 키 값이 있으면 값 덮어쓰기가 됨
             map.put(c, map.getOrDefault(c, 0) + 1);
-            // 가장 많이 사용된 맵의 요소의 개수 max에 담기
+            // 가장 많이 사용된 맵의 키와 매칭되는 값의 숫자를 max에 담기
             max = Math.max(max, map.get(c));
         }
 
